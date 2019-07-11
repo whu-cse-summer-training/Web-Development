@@ -1,0 +1,99 @@
+.App {
+  text-align: center;
+}
+
+.App-homelogo{
+  height:50px;
+  margin-left:100px;
+  margin-top:5px;
+}
+
+.menu{
+  position:fixed;
+  top:0;
+  height:60px;
+  width:100%;
+  background-color:#eee;
+}
+
+.home{
+  text-decoration: none;
+  color:black;
+  margin-top:-30px;
+  margin-left:142px;
+  font-size:30px;
+}
+
+.huangdou{
+  font-size:20px;
+  margin-left:450px;
+  margin-top:-100px;
+}
+
+.smile{
+  height:50px;
+  margin-left:390px;
+  margin-top:-73px;
+}
+
+.name{
+  font-size:40px;
+  margin-left:685px;
+  margin-top:-63px;
+  color:#FFCC00;
+}
+
+.searchlogo{
+  height:25px;
+  margin-left:1300px;
+  margin-top:-73px;
+}
+
+.container{
+  top:0;
+  height:70px;
+  width:800px;
+  margin:100px auto 0 auto;
+}
+
+.parent{
+  position:relative;
+}
+
+.search{
+  width:250px;
+  height:35px;
+  margin-left:250px;
+  margin-top:-82px;
+  border-radius:18px;
+  outline:none;
+  border:1px solid #ccc;
+  padding-left:20px;
+  position:absolute;
+}
+
+.btn{
+  margin-left:490px;
+  margin-top:-72px;
+  height:20px;
+  position:absolute;
+  border:none;
+  outline:none;
+  cursor:pointer;
+}
+
+.userlogo{
+  height:35px;
+  margin-left:1450px;
+  margin-top:-80px;
+}
+
+
+
+
+
+
+
+
+
+
