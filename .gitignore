@@ -1,0 +1,8 @@
+##ignore##
+back_end/env/
+*.pyc
+back_end/.vs/
+*.pyproj.*
+*.pyproj
+back_end/bin/
+*.sqlite3
