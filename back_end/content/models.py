@@ -6,6 +6,9 @@ from django.utils.translation import gettext_lazy as _
 class Tag(models.Model):
     name = models.CharField(_('Tag名称'), max_length = 50)
 
+    def __str__(self):
+        return self.name
+
 class Question(models.Model):
     caption = models.CharField(_('问题标题'), max_length = 100)
     description = models.TextField(_('问题详细描述'),)
@@ -25,7 +28,7 @@ class Answer(models.Model):
     bad = models.IntegerField(_('*不*'), default = 0)
 
     def __str__(self):
-        return self.author + '在问题' + self.question + '下的回答'
+        return self.author.__str__() + '在问题”' + self.question.__str__() + '”下的回答'
 
 class CommentOfQuestion(models.Model):
     content = models.TextField(_('评论内容'),)
@@ -34,7 +37,7 @@ class CommentOfQuestion(models.Model):
     question = models.ForeignKey(Question, on_delete = models.PROTECT)
 
     def __str__(self):
-        return self.author + '在问题' + self.question + '下的评论'
+        return self.author.__str__() + '在问题“' + self.question.__str__() + '”下的评论'
 
     class Meta():
         verbose_name_plural = 'CommentsOfQuestions'
@@ -46,7 +49,7 @@ class CommentOfAnswer(models.Model):
     answer = models.ForeignKey(Answer, on_delete = models.PROTECT)
 
     def __str__(self):
-        return self.author + '在回答' + self.answer + '下的评论'
+        return self.author.__str__() + '在回答”' + self.answer.__str__() + '”下的评论'
 
     class Meta():
         verbose_name_plural = 'CommentsOfAnswers'
@@ -57,7 +60,7 @@ class QuestionStatus(models.Model):
     question = models.OneToOneField(Question, on_delete = models.PROTECT)
 
     def __str__(self):
-        return '问题' + self.question + '的状态'
+        return '问题”' + self.question.__str__() + '”的状态'
 
     class Meta():
         verbose_name_plural = 'QuestionsStatus'
