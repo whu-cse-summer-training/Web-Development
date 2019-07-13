@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from .functions import user_avatar_path
+from .functions import OverwriteStorage
 
 # Create your models here.
 
@@ -34,9 +35,9 @@ class User(AbstractUser):
     #在注册账号时管理员将用户名置为学号
     #nickname是用户名，username是学号
     nickname = models.CharField('用户名', max_length = 20, blank = True)
-    avatar = models.ImageField('头像', upload_to = user_avatar_path, blank = True, null = True)
-    mylist = models.ManyToManyField('content.Answer', related_name = '收藏夹')
-    history = models.ManyToManyField('content.Answer', related_name = '历史记录')
+    avatar = models.ImageField('头像', upload_to = user_avatar_path, storage = OverwriteStorage(), blank = True, null = True)
+    mylist = models.ManyToManyField('content.Answer', related_name = '收藏夹', blank = True)
+    history = models.ManyToManyField('content.Answer', related_name = '历史记录', blank = True)
     
     class Meta(AbstractUser.Meta):
         pass
@@ -63,7 +64,7 @@ class Status(models.Model):
     class Meta():
         verbose_name_plural = 'Status'
 
-class MylistInfo:
+class MylistInfo(models.Model):
     user = models.ForeignKey(User, on_delete = models.PROTECT)
     answer = models.ForeignKey('content.Answer', on_delete = models.PROTECT)
     add_time = models.DateTimeField('收藏时间', auto_now_add = True)
@@ -74,7 +75,7 @@ class MylistInfo:
     class Meta():
         verbose_name_plural = 'MylistInfo'
 
-class HistoryInfo:
+class HistoryInfo(models.Model):
     user = models.ForeignKey(User, on_delete = models.PROTECT)
     answer = models.ForeignKey('content.Answer', on_delete = models.PROTECT)
     add_time = models.DateTimeField('最后访问', auto_now_add = True)
