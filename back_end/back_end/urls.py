@@ -21,5 +21,10 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.welcome)
+    path('', views.index),
+    path('index/', views.index),
+    path('community/', views.community),
+    path('api/', include('back_end.apiurls')),
+    path('users/', include(users.urls)),
+    path('content/', include(content.urls)),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
