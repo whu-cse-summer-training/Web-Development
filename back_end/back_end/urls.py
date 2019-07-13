@@ -25,6 +25,6 @@ urlpatterns = [
     path('index/', views.index),
     path('community/', views.community),
     path('api/', include('back_end.apiurls')),
-    path('users/', include(users.urls)),
-    path('content/', include(content.urls)),
+    path('users/', include('users.urls')),
+    path('content/', include('content.urls')),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
