@@ -19,6 +19,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 
+
+#主页页面相关视图函数直接在.views中实现
+#其他页面视图函数交给application.urls处理，在application.views实现
+#所有api视图都以api/开头来命名，交给.apiurls处理
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),

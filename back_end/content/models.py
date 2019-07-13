@@ -2,12 +2,14 @@ from django.db import models
 
 # Create your models here.
 
+#Tag类
 class Tag(models.Model):
     name = models.CharField('Tag名称', max_length = 50)
 
     def __str__(self):
         return self.name
 
+#问题类
 class Question(models.Model):
     caption = models.CharField('问题标题', max_length = 100)
     description = models.TextField('问题详细描述')
@@ -18,6 +20,7 @@ class Question(models.Model):
     def __str__(self):
         return self.caption
 
+#回答类，先有问题再有回答
 class Answer(models.Model):
     content = models.TextField('回答正文')
     author = models.ForeignKey('users.User', on_delete = models.PROTECT)
@@ -29,6 +32,7 @@ class Answer(models.Model):
     def __str__(self):
         return self.author.__str__() + ' 在问题”' + self.question.__str__() + '”下的回答'
 
+#问题评论类，先有问题再有评论
 class CommentOfQuestion(models.Model):
     content = models.TextField('评论内容',)
     author = models.ForeignKey('users.User', on_delete = models.PROTECT)
@@ -41,6 +45,7 @@ class CommentOfQuestion(models.Model):
     class Meta():
         verbose_name_plural = 'CommentsOfQuestions'
 
+#回答评论类，先有回答再有评论，又先要有问题再有回答
 class CommentOfAnswer(models.Model):
     content = models.TextField('评论内容')
     author = models.ForeignKey('users.User', on_delete = models.PROTECT)
@@ -53,6 +58,7 @@ class CommentOfAnswer(models.Model):
     class Meta():
         verbose_name_plural = 'CommentsOfAnswers'
 
+#问题状态，是否可编辑和是否可添加回答，目前没有计划增加别的字段
 class QuestionStatus(models.Model):
     able_modify = models.BooleanField('可编辑', default = True)
     able_answer = models.BooleanField('可添加回答', default = True)
