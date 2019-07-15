@@ -1,0 +1,90 @@
+@import '~antd/dist/antd.css';
+
+.App {
+  text-align: center;
+}
+
+.homelogo{
+  color:black;
+  float:left;
+  font-size: 35px;
+  margin-top:-1px;
+}
+
+.smilesoybean{
+  margin-top:-1px;
+  color:black;
+  float:left;
+  font-size:35px;
+}
+
+.webname{
+  margin-top:-5px;
+  color:orange;
+  float:left;
+  font-size: 45px;
+}
+
+.search{
+  float:left;
+}
+
+.userlogo{
+  font-size: 45px;
+  margin-top:-6px;
+}
+
+img{
+  width:1500px;
+  height:750px;
+}
+
+.grayblock{
+  margin-top:-650px;
+  margin-left:250px;
+  width: 1000px;
+  height: 700px;
+  position:absolute;
+  font-size: 700px;
+  opacity:0.88;
+  background-color:white;
+}
+
+.foot{
+  left:0px;
+  bottom:0px;
+  color: white;
+  background-color: black;
+}
+
+.clearfix {
+  margin-left: 400px;
+  margin-top: 30px;
+  width: 100px;
+  height: 100px;
+}
+
+.uploader > .ant-upload {
+  border: 2px solid black;
+  width: 100px;
+  height: 100px;
+}
+
+.ant-upload-select-picture-card i {
+  font-size: 32px;
+  color: black;
+}
+
+.ant-upload-select-picture-card .ant-upload-text {
+  margin-top: 8px;
+  color: black;
+}
+
+.table{
+  margin-top: 30px;
+  margin-left: 200px;
+  width: 700px;
+  height: 500px;
+  color: black;
+  font-size: 32px;
+}
