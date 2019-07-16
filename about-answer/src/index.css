@@ -1,0 +1,121 @@
+@import '~antd/dist/antd.css';
+
+
+.theanswer{
+  text-align: center;
+}
+
+.homelogo{
+  color:black;
+  float:left;
+  font-size: 35px;
+  margin-top:-1px;
+}
+
+.smilesoybean{
+  margin-top:-1px;
+  color:black;
+  float:left;
+  font-size:35px;
+}
+
+.webname{
+  margin-top:-5px;
+  color:orange;
+  float:left;
+  font-size: 45px;
+}
+
+.search{
+  float:left;
+}
+
+.userlogo{
+  font-size: 45px;
+  margin-top:-6px;
+}
+
+.foot{
+  left:0px;
+  bottom:0px;
+  color: white;
+  background-color: black;
+}
+
+.background{
+  width:1519px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.question{
+  margin-top: 80px;
+  margin-left: 250px;
+  width:1000px;
+  height:200px;
+}
+
+.card1{
+  width: 1000px;
+  text-align:left;
+  word-wrap:break-word;
+  overflow:hidden;
+  word-break: break-all;
+}
+
+.display{
+  background-color: white;
+  float:left;
+  width:589px;
+  height:1150px;
+  margin-left:251px;
+  margin-top:10px;
+  opacity: 0.9;
+}
+
+.answer{
+  margin-top: 15px;
+  margin-left: 30px;
+  width: 540px;
+  text-align:left;
+  word-wrap:break-word;
+  overflow:hidden;
+  word-break: break-all;
+}
+
+.banner{
+  float:left;
+  margin-top: 10px;
+  margin-left: 10px;
+  position: sticky;
+  top:64px;
+}
+
+.ant-carousel .slick-slide {
+  float: right;
+  text-align:center;
+  height:280px;
+  line-height:280px;
+  background-color: #61dafb;
+  overflow:hidden;
+}
+
+.ant-carousel .slick-slide h3 {
+  color: #ffffff;
+}
+
+.demo-infinite-container {
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  overflow: auto;
+  padding: 8px 24px;
+  height: 350px;
+  text-align:left;
+}
+.demo-loading-container {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  text-align: center;
+}
