@@ -1,0 +1,94 @@
+@import '~antd/dist/antd.css';
+
+.App {
+  text-align: center;
+}
+
+.homelogo{
+  color:black;
+  float:left;
+  font-size: 35px;
+  margin-top:-1px;
+}
+
+.smilesoybean{
+  margin-top:-1px;
+  color:black;
+  float:left;
+  font-size:35px;
+}
+
+.webname{
+  margin-top:-5px;
+  color:orange;
+  float:left;
+  font-size: 45px;
+}
+
+.search{
+  float:left;
+}
+
+.userlogo{
+  font-size: 45px;
+  margin-top:-6px;
+}
+
+img{
+  width:1500px;
+  height:750px;
+}
+
+.foot{
+  left:0px;
+  bottom:0px;
+  color: white;
+  background-color: black;
+}
+
+.gray1{
+  margin-top:-630px;
+  margin-left:250px;
+  width: 1000px;
+  height: 180px;
+  position:absolute;
+  opacity:0.5;
+  background-color:white;
+}
+
+.ID{
+  margin-top:-580px;
+  margin-left:-200px;
+  color:black;
+  font-size: 40px;
+}
+
+.link{
+  margin-top: -20px;
+  margin-left:750px;
+}
+
+.card{
+  margin-top:-420px;
+  margin-left:250px;
+  width: 1000px;
+  height: 1200px;
+  position:absolute;
+}
+
+.tab5{
+  margin-top:0px;
+  margin-left:150px;
+  width: 660px;
+  height: 500px;
+  position:absolute;
+  font-size: 20px;
+}
+
+.tab4 ,.tab3, .tab2, .tab1{
+  margin-left:150px;
+  width: 660px;
+  height: 500px;
+  position:absolute;
+  font-size: 20px;
+}

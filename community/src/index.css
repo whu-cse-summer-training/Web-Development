@@ -1,0 +1,125 @@
+@import '~antd/dist/antd.css';
+
+
+.community{
+  text-align: center;
+}
+
+.homelogo{
+  color:black;
+  float:left;
+  font-size: 45px;
+  margin-top:-2px;
+}
+
+.smilesoybean{
+  margin-top:-1px;
+  color:black;
+  float:left;
+  font-size:35px;
+}
+
+.webname{
+  margin-top:-5px;
+  color:orange;
+  float:left;
+  font-size: 45px;
+}
+
+.search{
+  float:left;
+}
+
+.userlogo{
+  float:left;
+  font-size: 30px;
+}
+
+.ph2{
+  width:1519px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.ph1{
+  width:1000px;
+  height:200px;
+}
+
+.enjoy{
+  margin-top: -110px;
+  margin-left: -520px;
+  font-weight: 500;
+  font-size: 30px;
+  color:gray;
+}
+
+.huangdou{
+  margin-top:-22px;
+  margin-left: -240px;
+  font-weight: bold;
+  font-size: 37px;
+  color:yellow;
+}
+
+.build{
+  float:left;
+  margin-left:1000px;
+  margin-top:-125px;
+  font-size: 80px;
+}
+
+.display{
+  background-color: white;
+  float:left;
+  width:600px;
+  height:950px;
+  margin-left:260px;
+  margin-top:-30px;
+  opacity: 0.8;
+}
+
+.useravatar{
+  margin-left: 15px;
+}
+.question{
+  margin-left:-63px;
+}
+
+.banner{
+  float:left;
+  margin-top: -30px;
+  position: sticky;
+  top:64px;
+}
+
+.ant-carousel .slick-slide {
+  float: right;
+  text-align:center;
+  height:280px;
+  line-height:280px;
+  background-color: #61dafb;
+  overflow:hidden;
+}
+
+.ant-carousel .slick-slide h3 {
+  color: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
