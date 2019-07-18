@@ -1,6 +1,9 @@
-from django.urls import path, re_path
+from django.urls import path
 from . import views
 
+app_name = 'users'
 urlpatterns = [
-    re_path(r'^id=\d*$', views.userspace)
+    path('', views.index),
+    path('community/', views.community),
+    path('id=<int:uid>', views.userspace, name = 'user_space')
 ]

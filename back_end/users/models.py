@@ -1,8 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.validators import UnicodeUsernameValidator
+from django.urls import reverse
 from .functions import user_avatar_path
 from .functions import OverwriteStorage
+
 
 # Create your models here.
 
@@ -48,7 +50,7 @@ class User(AbstractUser):
 
 #用户资料类，具体字段可以再添加
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete = models.PROTECT, default = None)
+    user = models.OneToOneField(User, on_delete = models.PROTECT, default = None, related_name = 'profile')
     gender = models.SmallIntegerField('性别', choices = gender_choices, default = 2)
     birthday = models.DateField('生日', blank = True)
     school = models.CharField('所属学校', max_length = 20, blank = True)
@@ -57,6 +59,9 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username + '用户资料'
+
+    def get_absolute_url(self):
+        return reverse('users:user_space', kwargs={'uid': self.pk})
 
 #用户状态类，目前只有封禁状态，其他字段可以再添加
 class Status(models.Model):

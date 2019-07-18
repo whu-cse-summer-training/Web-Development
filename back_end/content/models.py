@@ -13,7 +13,7 @@ class Tag(models.Model):
 class Question(models.Model):
     caption = models.CharField('问题标题', max_length = 100)
     description = models.TextField('问题详细描述')
-    author = models.ForeignKey('users.User', on_delete = models.PROTECT)
+    author = models.ForeignKey('users.User', on_delete = models.PROTECT, related_name = 'my_questions')
     modified_time = models.DateTimeField('最后编辑时间', auto_now = True)
     tag = models.ManyToManyField(Tag, blank = True)
 
@@ -23,8 +23,8 @@ class Question(models.Model):
 #回答类，先有问题再有回答
 class Answer(models.Model):
     content = models.TextField('回答正文')
-    author = models.ForeignKey('users.User', on_delete = models.PROTECT)
-    question = models.ForeignKey(Question, on_delete = models.PROTECT)
+    author = models.ForeignKey('users.User', on_delete = models.PROTECT, related_name = 'my_answers')
+    question = models.ForeignKey(Question, on_delete = models.PROTECT, related_name = 'answers')
     modified_time = models.DateTimeField('最后编辑时间', auto_now = True)
     good = models.IntegerField('*好*', default = 0)
     bad = models.IntegerField('*不*', default = 0)
@@ -37,7 +37,7 @@ class CommentOfQuestion(models.Model):
     content = models.TextField('评论内容',)
     author = models.ForeignKey('users.User', on_delete = models.PROTECT)
     created_time = models.DateTimeField('评论时间', auto_now_add = True)
-    question = models.ForeignKey(Question, on_delete = models.PROTECT)
+    question = models.ForeignKey(Question, on_delete = models.PROTECT, related_name = 'comment')
 
     def __str__(self):
         return self.author.__str__() + ' 在问题“' + self.question.__str__() + '”下的评论'
@@ -50,7 +50,7 @@ class CommentOfAnswer(models.Model):
     content = models.TextField('评论内容')
     author = models.ForeignKey('users.User', on_delete = models.PROTECT)
     created_time = models.DateTimeField('评论时间', auto_now_add = True)
-    answer = models.ForeignKey(Answer, on_delete = models.PROTECT)
+    answer = models.ForeignKey(Answer, on_delete = models.PROTECT, related_name = 'comment')
 
     def __str__(self):
         return self.author.__str__() + ' 在回答”' + self.answer.__str__() + '”下的评论'
@@ -62,7 +62,7 @@ class CommentOfAnswer(models.Model):
 class QuestionStatus(models.Model):
     able_modify = models.BooleanField('可编辑', default = True)
     able_answer = models.BooleanField('可添加回答', default = True)
-    question = models.OneToOneField(Question, on_delete = models.PROTECT)
+    question = models.OneToOneField(Question, on_delete = models.PROTECT, related_name = 'status')
 
     def __str__(self):
         return '问题”' + self.question.__str__() + '”的状态'

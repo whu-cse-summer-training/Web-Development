@@ -25,9 +25,8 @@ from . import views
 #所有api视图都以api/开头来命名，交给.apiurls处理
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index),
-    path('index/', views.index),
-    path('community/', views.community),
+    path('', include('users.urls')),
+    path('index/', include('users.urls')),
     path('api/', include('back_end.apiurls')),
     path('users/', include('users.urls')),
     path('content/', include('content.urls')),
