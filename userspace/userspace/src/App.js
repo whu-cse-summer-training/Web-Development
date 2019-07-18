@@ -1,6 +1,7 @@
+//个人主页
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './App.css';
+import './index.css';
 import 'antd/dist/antd.css';
 import {
     Layout,
@@ -17,7 +18,7 @@ import {
     Descriptions,
     List,
 } from 'antd';
-import user_backgroung from './meterials/user-background.jpg';
+import user_backgroung from './material/user-background.jpg';
 const { Search } = Input;
 const { Header, Content, Footer } = Layout;
 const menu = (
@@ -51,7 +52,7 @@ for (let i = 0; i < 23; i++) {
       `问题描述 ${i}`,
   });
 }
-
+//页头导航标签
 const tabListNoTitle = [
   {key: 'tab1',tab: '我的提问',},
   {key: 'tab2',tab: '我的回答',},
@@ -59,6 +60,7 @@ const tabListNoTitle = [
   {key: 'tab4',tab: '我的收藏',},
   {key: 'tab5',tab: '个人资料',},
 ];
+//各个子页面的内容
 const contentListNoTitle = {
   tab1: <div align="left" >
       <List
@@ -74,8 +76,7 @@ const contentListNoTitle = {
               <List.Item
                 key={item.title}
                 actions={[
-                  <IconText type="star-o" text="999" />,
-                  <IconText type="like-o" text="666" />,
+                  <IconText type="clock-circle" text="时间" />,
                   <IconText type="edit" text="2" />,
                 ]}
               >
@@ -108,10 +109,10 @@ const contentListNoTitle = {
                 extra={ <img width={272} alt=" "  src=" " /> }
               >
                 <List.Item.Meta
-                  title={<a href={item.href}>{item.title}</a>}
+                  title={item.title}
                   description={item.description}
                 />
-                {item.content}
+                <a href={item.href}>{item.content}</a>
               </List.Item>
             )}
           /></div>,
@@ -137,10 +138,10 @@ const contentListNoTitle = {
               >
                 <List.Item.Meta
                   avatar={<Avatar src={item.avatar} />}
-                  title={<a href={item.href}>{item.title}</a>}
+                  title={item.title}
                   description={item.description}
                 />
-                {item.content}
+                <a href={item.href}>{item.content}</a>
               </List.Item>
             )}
           /></div>,
@@ -166,10 +167,10 @@ const contentListNoTitle = {
               >
                 <List.Item.Meta
                   avatar={<Avatar src={item.avatar} />}
-                  title={<a href={item.href}>{item.title}</a>}
+                  title={item.title}
                   description={item.description}
                 />
-                {item.content}
+                <a href={item.href}>{item.content}</a>
               </List.Item>
             )}
           /></div>,
@@ -200,6 +201,7 @@ class App extends React.Component {
         confirmDirty: false,
         autoCompleteResult: [ ],
         key: 'tab',
+		//默认状态是tab5，即个人信息
         noTitleKey: 'tab5',
       };
 
@@ -284,4 +286,4 @@ class App extends React.Component {
     }
   }
 
-export default App;
+ReactDOM.render(<App />, document.getElementById('root'));
