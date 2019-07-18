@@ -9,6 +9,7 @@ from .serializer import SimpleInfoSerializer, UserSerializer, MylistSerializer, 
 class SimpleInfoView(APIView):
     def post(self, request, format=None):
         if  request.user.is_authenticated:
+            print('authenticated!')
             user = User.objects.get(pk = request.user.pk)
             serializer = SimpleInfoSerializer(user)
             return Response(serializer.data, status = status.HTTP_200_OK)

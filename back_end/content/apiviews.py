@@ -106,6 +106,13 @@ class AddAnswerView(APIView):
                 question = Question.objects.get(pk = qid)
             except Question.DoesNotExist:
                 return Response(status = status.HTTP_404_NOT_FOUND)
-
+            serializer = AnswerSerializer(data = request.data)
+            if serializer.is_valid(raise_exception = True):
+                obj = serializer.save()
+                obj.author = request.user
+                obj.save()
+            else:
+                return Response(status = status.HTTP_400_BAD_REQUEST)
+            return Response(status = status.HTTP_200_OK)
         else:
             return Response(status = status.HTTP_401_UNAUTHORIZED)
