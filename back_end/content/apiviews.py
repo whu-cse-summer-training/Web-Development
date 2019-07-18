@@ -4,6 +4,9 @@ from rest_framework import status
 from .models import Answer, Question, Tag
 from users.models import User
 from .serializer import RecommandSerializer, QuestionSerializer, AnswerSerializer
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt
 
 class RecommandView(APIView):
     def post(self, request, format = None):
@@ -78,7 +81,7 @@ class AddHistoryView(APIView):
             return Response(status = status.HTTP_401_UNAUTHORIZED)
 
 class AddQuestionView(APIView):
-    def post(self, request,format = None, aid = 0):
+    def post(self, request,format = None):
         if  request.user.is_authenticated:  
             serializer = QuestionSerializer(data = request.data)
             if serializer.is_valid(raise_exception = True):
@@ -96,5 +99,16 @@ class AddQuestionView(APIView):
                     t.save()
                 obj.tag.add(t)
             return Response(status = status.HTTP_200_OK)
+        else:
+            return Response(status = status.HTTP_401_UNAUTHORIZED)
+
+class AddAnswerView(APIView):
+    def post(self, request,format = None, qid = 0):
+        if  request.user.is_authenticated:  
+            try:
+                question = Question.objects.get(pk = qid)
+            except Question.DoesNotExist:
+                return Response(status = status.HTTP_404_NOT_FOUND)
+
         else:
             return Response(status = status.HTTP_401_UNAUTHORIZED)
