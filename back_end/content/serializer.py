@@ -18,13 +18,14 @@ class RecommandSerializer(serializers.ModelSerializer):
 class AnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Answer
-        fields = ('content', 'get_absolute_url', 'author_nickname', 'author_avatar', 'author_space_url', 'good', 'bad', 'modified_time', 'question_caption', 'question_page_url')
+        fields = ('content', 'get_absolute_url', 'author_nickname', 'author_avatar', 'author_space_url', 'question_caption', 'question_page_url')
+        read_only_field = ('good', 'bad', 'modified_time')
 
-    author_nickname = serializers.CharField(source = 'author.nickname')
-    author_avatar = serializers.ImageField(source = 'author.avatar')
-    author_space_url = serializers.URLField(source = 'author.profile.get_absolute_url')
-    question_caption = serializers.CharField(source = 'question.caption')
-    question_page_url = serializers.URLField(source = 'question.get_absolute_url')
+    author_nickname = serializers.CharField(source = 'author.nickname', read_only = True)
+    author_avatar = serializers.ImageField(source = 'author.avatar', read_only = True)
+    author_space_url = serializers.URLField(source = 'author.profile.get_absolute_url', read_only = True)
+    question_caption = serializers.CharField(source = 'question.caption', read_only = True)
+    question_page_url = serializers.URLField(source = 'question.get_absolute_url', read_only = True)
 
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:

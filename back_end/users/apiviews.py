@@ -5,9 +5,6 @@ from rest_framework import status
 from django.contrib.auth import login, logout
 from .models import User
 from .serializer import SimpleInfoSerializer, UserSerializer, MylistSerializer, HistorySerializer, MyQuestionSerializer, MyAnswerSerializer
-from django.views.decorators.csrf import csrf_exempt
-
-@csrf_exempt
 
 class SimpleInfoView(APIView):
     def post(self, request, format=None):

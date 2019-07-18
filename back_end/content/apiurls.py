@@ -9,5 +9,6 @@ urlpatterns = [
     path('bad/id=<int:aid>', apiviews.GoodView.as_view()),
     path('add_mylist/id=<int:aid>', apiviews.AddMylistView.as_view()),
     path('add_history/id=<int:aid>', apiviews.AddHistoryView.as_view()),
-    path('add_question/', apiviews.AddQuestionView.as_view())
+    path('add_question/', apiviews.AddQuestionView.as_view()),
+    path('add_answer/id=<int:qid>', apiviews.AddAnswerView.as_view())
 ]

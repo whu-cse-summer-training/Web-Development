@@ -18,6 +18,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
+from django.views.decorators.csrf import csrf_exempt
 
 
 #主页页面相关视图函数直接在.views中实现
