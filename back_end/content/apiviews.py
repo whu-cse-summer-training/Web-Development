@@ -4,9 +4,6 @@ from rest_framework import status
 from .models import Answer, Question, Tag
 from users.models import User
 from .serializer import RecommandSerializer, QuestionSerializer, AnswerSerializer
-from django.views.decorators.csrf import csrf_exempt
-
-@csrf_exempt
 
 class RecommandView(APIView):
     def post(self, request, format = None):
