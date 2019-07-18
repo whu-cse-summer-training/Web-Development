@@ -1,6 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.http import HttpResponseRedirect
 from rest_framework import status
+from django.contrib.auth import login, logout
 from .models import User
 from .serializer import SimpleInfoSerializer, UserSerializer, MylistSerializer, HistorySerializer, MyQuestionSerializer, MyAnswerSerializer
 
@@ -79,3 +81,20 @@ class MyAnswerView(APIView):
             return Response(serializer.data, status = status.HTTP_200_OK)
         else:
             return Response(status = status.HTTP_401_UNAUTHORIZED)
+
+class LoginView(APIView):
+    def post(self, request, format = None):
+        username = request.data['username']
+        password = request.data['password']
+        print(username, password)
+        try:
+            user = User.objects.get(username = username, password = password)
+        except User.DoesNotExist:
+            return Response(status = status.HTTP_404_NOT_FOUND)
+        if user.is_authenticated:
+            if request.user.is_authenticated:
+                logout(request)
+            login(request, user)
+            return HttpResponseRedirect('/community')
+        else:
+            return Response(status = status.HTTP_404_NOT_FOUND)

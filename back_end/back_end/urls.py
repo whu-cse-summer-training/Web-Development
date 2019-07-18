@@ -30,4 +30,5 @@ urlpatterns = [
     path('api/', include('back_end.apiurls')),
     path('users/', include('users.urls')),
     path('content/', include('content.urls')),
-] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)\
+    +static('index'+settings.STATIC_URL,document_root = settings.USERSSTATIC_ROOT)

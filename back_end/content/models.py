@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 
@@ -13,12 +14,15 @@ class Tag(models.Model):
 class Question(models.Model):
     caption = models.CharField('问题标题', max_length = 100)
     description = models.TextField('问题详细描述')
-    author = models.ForeignKey('users.User', on_delete = models.PROTECT, related_name = 'my_questions')
+    author = models.ForeignKey('users.User', on_delete = models.PROTECT, related_name = 'my_questions', null = True)
     modified_time = models.DateTimeField('最后编辑时间', auto_now = True)
     tag = models.ManyToManyField(Tag, blank = True)
 
     def __str__(self):
         return self.caption
+
+    def get_absolute_url(self):
+        return reverse('content:question_page', kwargs={'qid': self.pk})
 
 #回答类，先有问题再有回答
 class Answer(models.Model):
@@ -31,6 +35,17 @@ class Answer(models.Model):
 
     def __str__(self):
         return self.author.__str__() + ' 在问题”' + self.question.__str__() + '”下的回答'
+
+    def get_absolute_url(self):
+        return reverse('content:answer_page', kwargs={'aid': self.pk})
+
+    def add_good(self):
+        self.good += 1
+        self.save(update_fields = ['good'])
+
+    def add_bad(self):
+        self.bad += 1
+        self.save(update_fields = ['bad'])
 
 #问题评论类，先有问题再有评论
 class CommentOfQuestion(models.Model):

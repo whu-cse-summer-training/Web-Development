@@ -9,4 +9,5 @@ urlpatterns = [
     path('history/id=<int:uid>', apiviews.HistoryView.as_view()),
     path('question/id=<int:uid>', apiviews.MyQuestionView.as_view()),
     path('answer/id=<int:uid>', apiviews.MyAnswerView.as_view()),
+    path('login/', apiviews.LoginView.as_view()),
 ]
