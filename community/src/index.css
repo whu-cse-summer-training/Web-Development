@@ -1,6 +1,6 @@
+/*社区页面*/
 @import '~antd/dist/antd.css';
-
-
+/*整个页面居中*/
 .community{
   text-align: center;
 }
@@ -8,8 +8,8 @@
 .homelogo{
   color:black;
   float:left;
-  font-size: 45px;
-  margin-top:-2px;
+  font-size: 35px;
+  margin-top:-1px;
 }
 
 .smilesoybean{
@@ -31,24 +31,43 @@
 }
 
 .userlogo{
-  float:left;
-  font-size: 30px;
+  font-size: 45px;
+  margin-top:-6px;
 }
 
-.ph2{
+.foot{
+  left:0px;
+  bottom:0px;
+  color: white;
+  background-color: black;
+}
+
+.background{
   width:1519px;
   background-size: 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-
+/*搜索、提问的盒子*/
+.ask{
+  margin-top: 80px;
+  margin-left: 250px;
+  width:1000px;
+  height:230px;
+}
+/*搜索、提问的盒子背景图*/
 .ph1{
   width:1000px;
-  height:200px;
+  height:290px;
+}
+/*搜索输入框*/
+.search2{
+  margin-top: -220px;
+  width: 750px;
 }
 
 .enjoy{
-  margin-top: -110px;
+  margin-top: -150px;
   margin-left: -520px;
   font-weight: 500;
   font-size: 30px;
@@ -56,42 +75,41 @@
 }
 
 .huangdou{
-  margin-top:-22px;
+  margin-top:-42px;
   margin-left: -240px;
   font-weight: bold;
   font-size: 37px;
   color:yellow;
 }
-
-.build{
-  float:left;
-  margin-left:1000px;
-  margin-top:-125px;
-  font-size: 80px;
-}
-
+/*词条展示的盒子*/
 .display{
   background-color: white;
   float:left;
-  width:600px;
-  height:950px;
-  margin-left:260px;
-  margin-top:-30px;
-  opacity: 0.8;
+  width:589px;
+  height:1020px;
+  margin-left:251px;
+  margin-top:90px;
+  opacity: 0.9;
 }
-
+/*词条里的用户头像*/
 .useravatar{
   margin-left: 15px;
+  margin-top: 20px;
 }
-.question{
-  margin-left:-63px;
+/*可点击跳转到答案详情页面*/
+.answers{
+  margin-top:20px;
+  margin-left:30px;
+  text-align:left;
+  width:540px;
 }
 
 .banner{
   float:left;
-  margin-top: -30px;
+  margin-top: 90px;
+  margin-left: 10px;
   position: sticky;
-  top:64px;
+  top: 64px;
 }
 
 .ant-carousel .slick-slide {
@@ -106,20 +124,4 @@
 .ant-carousel .slick-slide h3 {
   color: #ffffff;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
