@@ -4,13 +4,18 @@ from rest_framework import status
 from .models import Answer, Question, Tag
 from users.models import User
 from .serializer import RecommandSerializer, QuestionSerializer, AnswerSerializer
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 
+
+@method_decorator(csrf_exempt, name='dispatch')
 class RecommandView(APIView):
     def post(self, request, format = None):
         answers = Answer.objects.all()
         serializer = RecommandSerializer(answers, many = True)
         return Response(serializer.data, status = status.HTTP_200_OK)
 
+@method_decorator(csrf_exempt, name='dispatch')
 class QuestionView(APIView):
     def post(self, request, format = None, qid = 0):
         try:
@@ -20,6 +25,7 @@ class QuestionView(APIView):
         serializer = QuestionSerializer(question)
         return Response(serializer.data, status = status.HTTP_200_OK)
 
+@method_decorator(csrf_exempt, name='dispatch')
 class AnswerView(APIView):
     def post(self, request, format = None, aid = 0):
         try:
@@ -29,6 +35,7 @@ class AnswerView(APIView):
         serializer = AnswerSerializer(answer)
         return Response(serializer.data, status = status.HTTP_200_OK)
 
+@method_decorator(csrf_exempt, name='dispatch')
 class GoodView(APIView):
     def post(self, request,format = None, aid = 0):
         if  request.user.is_authenticated:
@@ -41,6 +48,7 @@ class GoodView(APIView):
         else:
             return Response(status = status.HTTP_401_UNAUTHORIZED)
 
+@method_decorator(csrf_exempt, name='dispatch')
 class BadView(APIView):
     def post(self, request,format = None, aid = 0):
         if  request.user.is_authenticated:
@@ -53,6 +61,7 @@ class BadView(APIView):
         else:
             return Response(status = status.HTTP_401_UNAUTHORIZED)
 
+@method_decorator(csrf_exempt, name='dispatch')
 class AddMylistView(APIView):
     def post(self, request,format = None, aid = 0):
         if  request.user.is_authenticated:
@@ -65,6 +74,7 @@ class AddMylistView(APIView):
         else:
             return Response(status = status.HTTP_401_UNAUTHORIZED)
 
+@method_decorator(csrf_exempt, name='dispatch')
 class AddHistoryView(APIView):
     def post(self, request,format = None, aid = 0):
         if  request.user.is_authenticated:
@@ -77,6 +87,7 @@ class AddHistoryView(APIView):
         else:
             return Response(status = status.HTTP_401_UNAUTHORIZED)
 
+@method_decorator(csrf_exempt, name='dispatch')
 class AddQuestionView(APIView):
     def post(self, request,format = None):
         if  request.user.is_authenticated:  
@@ -99,6 +110,7 @@ class AddQuestionView(APIView):
         else:
             return Response(status = status.HTTP_401_UNAUTHORIZED)
 
+@method_decorator(csrf_exempt, name='dispatch')
 class AddAnswerView(APIView):
     def post(self, request,format = None, qid = 0):
         if  request.user.is_authenticated:  

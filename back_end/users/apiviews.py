@@ -5,7 +5,10 @@ from rest_framework import status
 from django.contrib.auth import login, logout
 from .models import User
 from .serializer import SimpleInfoSerializer, UserSerializer, MylistSerializer, HistorySerializer, MyQuestionSerializer, MyAnswerSerializer
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 
+@method_decorator(csrf_exempt, name='dispatch')
 class SimpleInfoView(APIView):
     def post(self, request, format=None):
         if  request.user.is_authenticated:
@@ -16,6 +19,7 @@ class SimpleInfoView(APIView):
         else:
             return Response(status = status.HTTP_404_NOT_FOUND)
 
+@method_decorator(csrf_exempt, name='dispatch')
 class ProfileView(APIView):
     def post(self, request, format = None, uid = 0):
         if request.user.is_authenticated:
@@ -33,6 +37,7 @@ class ProfileView(APIView):
         else:
             return Response(status = status.HTTP_401_UNAUTHORIZED)
 
+@method_decorator(csrf_exempt, name='dispatch')
 class EditProfileView(APIView):
     def post(self, request, format = None, uid = 0):
         if request.user.is_authenticated and request.user.pk == uid:
@@ -47,6 +52,7 @@ class EditProfileView(APIView):
         else:
             return Response(status = status.HTTP_401_UNAUTHORIZED)
 
+@method_decorator(csrf_exempt, name='dispatch')
 class MylistView(APIView):
     def post(self, request, format =None, uid = 0):
         if request.user.is_authenticated and request.user.pk == uid:
@@ -56,6 +62,7 @@ class MylistView(APIView):
         else:
             return Response(status = status.HTTP_401_UNAUTHORIZED)
 
+@method_decorator(csrf_exempt, name='dispatch')
 class HistoryView(APIView):
     def post(self, request, format =None, uid = 0):
         if request.user.is_authenticated and request.user.pk == uid:
@@ -65,6 +72,7 @@ class HistoryView(APIView):
         else:
             return Response(status = status.HTTP_401_UNAUTHORIZED)
 
+@method_decorator(csrf_exempt, name='dispatch')
 class MyQuestionView(APIView):
     def post(self, request, format = None, uid = 0):
         if request.user.is_authenticated and request.user.pk == uid:
@@ -74,6 +82,7 @@ class MyQuestionView(APIView):
         else:
             return Response(status = status.HTTP_401_UNAUTHORIZED)
 
+@method_decorator(csrf_exempt, name='dispatch')
 class MyAnswerView(APIView):
     def post(self, request, format = None, uid = 0):
         if request.user.is_authenticated and request.user.pk == uid:
@@ -83,6 +92,7 @@ class MyAnswerView(APIView):
         else:
             return Response(status = status.HTTP_401_UNAUTHORIZED)
 
+@method_decorator(csrf_exempt, name='dispatch')
 class LoginView(APIView):
     def post(self, request, format = None):
         username = request.data['username']
