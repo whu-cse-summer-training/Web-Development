@@ -27,8 +27,8 @@ class Question(models.Model):
 #回答类，先有问题再有回答
 class Answer(models.Model):
     content = models.TextField('回答正文')
-    author = models.ForeignKey('users.User', on_delete = models.PROTECT, related_name = 'my_answers')
-    question = models.ForeignKey(Question, on_delete = models.PROTECT, related_name = 'answers')
+    author = models.ForeignKey('users.User', on_delete = models.PROTECT, related_name = 'my_answers', null = True)
+    question = models.ForeignKey(Question, on_delete = models.PROTECT, related_name = 'answers', null = True)
     modified_time = models.DateTimeField('最后编辑时间', auto_now = True)
     good = models.IntegerField('*好*', default = 0)
     bad = models.IntegerField('*不*', default = 0)
@@ -63,9 +63,9 @@ class CommentOfQuestion(models.Model):
 #回答评论类，先有回答再有评论，又先要有问题再有回答
 class CommentOfAnswer(models.Model):
     content = models.TextField('评论内容')
-    author = models.ForeignKey('users.User', on_delete = models.PROTECT)
+    author = models.ForeignKey('users.User', on_delete = models.PROTECT, null = True)
     created_time = models.DateTimeField('评论时间', auto_now_add = True)
-    answer = models.ForeignKey(Answer, on_delete = models.PROTECT, related_name = 'comment')
+    answer = models.ForeignKey(Answer, on_delete = models.PROTECT, related_name = 'comments', null = True)
 
     def __str__(self):
         return self.author.__str__() + ' 在回答”' + self.answer.__str__() + '”下的评论'

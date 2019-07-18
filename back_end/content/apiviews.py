@@ -1,9 +1,9 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Answer, Question, Tag
+from .models import Answer, Question, Tag, CommentOfAnswer
 from users.models import User
-from .serializer import RecommandSerializer, QuestionSerializer, AnswerSerializer
+from .serializer import RecommandSerializer, QuestionSerializer, AnswerSerializer, CommentSerializer
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
@@ -122,6 +122,36 @@ class AddAnswerView(APIView):
             if serializer.is_valid(raise_exception = True):
                 obj = serializer.save()
                 obj.author = request.user
+                obj.question = question
+                obj.save()
+            else:
+                return Response(status = status.HTTP_400_BAD_REQUEST)
+            return Response(status = status.HTTP_200_OK)
+        else:
+            return Response(status = status.HTTP_401_UNAUTHORIZED)
+
+class CommentView(APIView):
+    def post(self, request,format = None, aid = 0):
+        try:
+            answer= Answer.objects.get(pk = aid)
+        except Answer.DoesNotExist:
+            return Response(status = status.HTTP_404_NOT_FOUND)
+        comments = answer.comments.all()
+        serializer = CommentSerializer(comments, many = True)         
+        return Response(serializer.data, status = status.HTTP_200_OK)
+
+class AddCommentView(APIView):
+    def post(self, request,format = None, aid = 0):
+        if  request.user.is_authenticated:  
+            try:
+                answer= Answer.objects.get(pk = aid)
+            except Answer.DoesNotExist:
+                return Response(status = status.HTTP_404_NOT_FOUND)
+            serializer = CommentSerializer(data = request.data)
+            if serializer.is_valid(raise_exception = True):
+                obj = serializer.save()
+                obj.author = request.user
+                obj.answer = answer
                 obj.save()
             else:
                 return Response(status = status.HTTP_400_BAD_REQUEST)

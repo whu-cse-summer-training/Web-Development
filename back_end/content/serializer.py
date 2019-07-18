@@ -31,7 +31,7 @@ class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
         fields = ('caption', 'description', 'tags', 'author_avatar', 'author_nickname', 'author_space_url', 'answers')
-        read_only_field =('modified_time', 'author_avatar')
+        read_only_field =('modified_time')
 
     author_nickname = serializers.CharField(source = 'author.nickname', read_only = True)
     author_avatar = serializers.ImageField(source = 'author.avatar', read_only = True)
@@ -41,3 +41,12 @@ class QuestionSerializer(serializers.ModelSerializer):
 
     def get_tags(self, obj):
         return obj.tag.values('name')
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CommentOfAnswer
+        fields = ('content', 'created_time', 'author_avatar', 'author_nickname', 'author_space_url')
+
+    author_nickname = serializers.CharField(source = 'author.nickname', read_only = True)
+    author_avatar = serializers.ImageField(source = 'author.avatar', read_only = True)
+    author_space_url = serializers.URLField(source = 'author.profile.get_absolute_url', read_only = True)
