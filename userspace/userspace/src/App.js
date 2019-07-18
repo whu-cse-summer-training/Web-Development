@@ -1,7 +1,7 @@
 //个人主页
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './App.css';
 import 'antd/dist/antd.css';
 import {
     Layout,
