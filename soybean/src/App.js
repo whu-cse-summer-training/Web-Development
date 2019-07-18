@@ -1,37 +1,105 @@
 import React, {Component} from 'react';
 import './App.css';
 import 'antd/dist/antd.css';
+import UserLogo from './UserLogo';
 import { Layout, Menu } from 'antd';
 import { Row, Col } from 'antd';
 import { Icon } from 'antd';
 import { Input } from 'antd';
 import { Dropdown } from 'antd';
 import { Button } from 'antd';
-import { Avatar } from 'antd';
+import { Form, Checkbox, Modal } from 'antd';
 import home_1 from './material/home_1.jpg';
 import home_2 from './material/home_2.jpg';
 import home_3 from './material/home_3.jpg';
 import home_3_ from './material/home_3.1.jpg';
 import home_4 from './material/home_4.jpg';
+import axios from 'axios';
 
+axios.defaults.basseURL = 'https://localhost:8000/api/';
 
+let login = axios.create({
+    timeout: 1000,
+});
 
 
 const { Search } = Input;
 const { Header,Content, Footer } = Layout;
-const menu = (
-    <Menu>
-        <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="">个人主页</a>
-        </Menu.Item>
-        <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="">登录</a>
-        </Menu.Item>
-    </Menu>
-);
+
+class NormalLoginForm extends React.Component {
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        console.log('Received values of form: ', values);
+      }
+    });
+  };
+
+  render() {
+    const { getFieldDecorator } = this.props.form;
+    return (
+      <Form action="https://localhost:3000/api/users/login" onSubmit={this.handleSubmit} className="login-form">
+        <Form.Item>
+          {getFieldDecorator('username', {
+            rules: [{ required: true, message: 'Please input your username!' }],
+          })(
+            <Input
+              prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              placeholder="Username"
+            />,
+          )}
+        </Form.Item>
+        <Form.Item>
+          {getFieldDecorator('password', {
+            rules: [{ required: true, message: 'Please input your Password!' }],
+          })(
+            <Input
+              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              type="password"
+              placeholder="Password"
+            />,
+          )}
+        </Form.Item>
+        <Form.Item>
+          {getFieldDecorator('remember', {
+            valuePropName: 'checked',
+            initialValue: true,
+          })(<Checkbox>Remember me</Checkbox>)}
+          <a className="login-form-forgot" href="">
+            Forgot password
+          </a>
+          <Button type="primary" htmlType="submit" className="login-form-button">
+            Log in
+          </Button>
+        </Form.Item>
+      </Form>
+    );
+  }
+}
+
+const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(NormalLoginForm);
+
 
 class App extends Component{
+
+    state = {
+    visible: false
+  };
+
+  showModal = () => {
+    this.setState({
+      visible: true
+    });
+  };
+
+  handleCancel = () => {
+    this.setState({
+      visible: false });
+  };
+
     render() {
+        const { visible }= this.state;
       return (
         <div className="App">
             <Layout>
@@ -65,11 +133,28 @@ class App extends Component{
                         </Col>
                         <Col span={2} offset={3}>
                             <div>
-                                <Dropdown overlay={menu}>
-                                    <div className="userlogo">
-                                        <Avatar icon="user" src='' className="ant-dropdown-link" href="#" style={{background:"black"}} />
-                                        <Icon type="down"/>
-                                    </div>
+                                <Dropdown overlay={(<Menu>
+        <Menu.Item>
+            <a target="_blank" rel="noopener noreferrer" href="" style={{textAlign:'center'}}>个人主页</a>
+        </Menu.Item>
+        <Menu.Item>
+            <Button style={{borderColor:'white', backgroundColor:'white', color:'grey'}}
+                    type='primary' target='_blank' rel='noopener noreferrer' onClick={this.showModal}>
+                登录
+            </Button>
+            <Modal
+                visible={visible}
+                title="登录"
+                onCancel={this.handleCancel}
+                footer={null}
+            >
+                <div className='login_'>
+                    <WrappedNormalLoginForm />
+                </div>
+            </Modal>
+        </Menu.Item>
+    </Menu>)}>
+                                    <UserLogo />
                                 </Dropdown>
                             </div>
                         </Col>
@@ -103,12 +188,18 @@ class App extends Component{
                         <div className="rect3">
                             <p className="ins3">分享 | 校园知识 </p>
                         </div>
-                        <Button className="enterbtn1"><a>Enter Now</a></Button>
+                        <Button className="enterbtn1" style={{height:'200px', backgroundColor:'yellow'
+                                                                , borderColor:'black', fontSize:'50px', borderWidth: '6px', borderRadius:'20%'}}>
+                            <a>Enter Now</a>
+                        </Button>
                     </div>
                     <div>
                         <img src={home_3_} width="1519px" height="800px" style={{opacity:0.4}}/>
                         <img src={home_3} width="1519px" height="800px" style={{zIndex:-1, marginTop:"-825px"}}/>
-                        <Button className="enterbtn2"><a>Enter Now</a></Button>
+                        <Button className="enterbtn2" style={{height:'180px', fontSize:'45px', borderColor:'cornflowerblue',
+                                                                borderWidth:'6px',borderRadius:'20%'}}>
+                            <a>Enter Now</a>
+                        </Button>
                         <div className="soybeanhelpyou1" align="left">
                             <p>黄豆</p>
                             <p>帮你更了解自己</p>

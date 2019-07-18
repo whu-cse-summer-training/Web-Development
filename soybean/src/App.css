@@ -33,6 +33,20 @@
   font-size: 30px;
 }
 
+.login-form {
+  max-width: 300px;
+}
+.login-form-forgot {
+  float: right;
+}
+.login-form-button {
+  width: 100%;
+}
+
+.login_ {
+  margin-left:100px;
+}
+
 .tri_right{
   float:left;
   margin-top:-710px;
@@ -154,14 +168,8 @@
 .enterbtn1{
   float:left;
   width: 330px;
-  height:200px;
   margin-top: -550px;
   margin-left:900px;
-  font-size: 50px;
-  background-color: yellow;
-  border-color: black;
-  border-width: 6px;
-  border-radius: 20%;
 }
 
 .enterbtn2{
