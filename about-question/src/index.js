@@ -1,3 +1,5 @@
+//问题详情页
+//这一页可以点击查看每个回答的详情，也可以链接到写回答的页面
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
@@ -19,6 +21,7 @@ import {
 import Community_2 from './material/community_2.jpg';
 
 class App extends React.Component {
+//默认状态：点赞，踩，收藏，评论，时间等    
   constructor(props){
     super(props)
     this.state={
@@ -55,6 +58,7 @@ const menu = (
 const sectionStyle = {
     display:'inline-block',height:'1540px', backgroundImage:`url(` +Community_2 + `)`,
 };
+//以卡片的样式展示问题的内容    
 const { Meta } = Card;
 const IconText = ({ type, text }) => (
   <span>
