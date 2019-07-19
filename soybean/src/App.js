@@ -1,14 +1,11 @@
+//欢迎页
+//可登录
+//可跳转至其他页面
 import React, {Component} from 'react';
 import './App.css';
 import 'antd/dist/antd.css';
+import { Layout, Menu, Row, Col, Icon, Input, Dropdown, Button, Form, Checkbox, Modal } from 'antd';
 import UserLogo from './UserLogo';
-import { Layout, Menu } from 'antd';
-import { Row, Col } from 'antd';
-import { Icon } from 'antd';
-import { Input } from 'antd';
-import { Dropdown } from 'antd';
-import { Button } from 'antd';
-import { Form, Checkbox, Modal } from 'antd';
 import home_1 from './material/home_1.jpg';
 import home_2 from './material/home_2.jpg';
 import home_3 from './material/home_3.jpg';
@@ -22,10 +19,12 @@ let login = axios.create({
     timeout: 1000,
 });
 
-
+//const声明一个只读的常量。一旦声明，常量的值就不能改变
 const { Search } = Input;
 const { Header,Content, Footer } = Layout;
-
+//登录时弹出表单
+//获取表单内容
+//封装成一个类
 class NormalLoginForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
@@ -86,7 +85,7 @@ class App extends Component{
     state = {
     visible: false
   };
-
+//点击后弹窗
   showModal = () => {
     this.setState({
       visible: true
