@@ -1,6 +1,7 @@
 from django.urls import path
 from . import apiviews
 
+#首页推荐，问题内容，回答内容分，点赞，踩，加入收藏，加入历史记录，提出问题，添加回答，查看评论，发表评论
 urlpatterns = [
     path('recommand/', apiviews.RecommandView.as_view()),
     path('question/id=<int:qid>', apiviews.QuestionView.as_view()),

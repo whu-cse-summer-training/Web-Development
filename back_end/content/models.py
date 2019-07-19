@@ -39,10 +39,12 @@ class Answer(models.Model):
     def get_absolute_url(self):
         return reverse('content:answer_page', kwargs={'aid': self.pk})
 
+    #点赞函数，点赞api引用一下就可以点赞自己
     def add_good(self):
         self.good += 1
         self.save(update_fields = ['good'])
 
+    #踩函数，踩api引用一下就可以踩自己
     def add_bad(self):
         self.bad += 1
         self.save(update_fields = ['bad'])

@@ -1,6 +1,8 @@
 from django.urls import path, re_path
 from . import apiviews
 
+
+#简易个人信息，详细个人信息，编辑个人信息，收藏夹，历史记录，我的提问，我的回答，登录
 urlpatterns = [
     path('simple_info/', apiviews.SimpleInfoView.as_view()),
     path('id=<int:uid>', apiviews.ProfileView.as_view()),
