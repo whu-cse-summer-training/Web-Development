@@ -1,61 +1,61 @@
+/*回答详情页*/
 @import '~antd/dist/antd.css';
-
-
+/*整个页面*/
 .theanswer{
   text-align: center;
 }
-
+/*主页图标*/
 .homelogo{
   color:black;
   float:left;
   font-size: 35px;
   margin-top:-1px;
 }
-
+/*广场页图标*/
 .smilesoybean{
   margin-top:-1px;
   color:black;
   float:left;
   font-size:35px;
 }
-
+/*黄豆 | 知识*/
 .webname{
   margin-top:-5px;
   color:orange;
   float:left;
   font-size: 45px;
 }
-
+/*搜索框*/
 .search{
   float:left;
 }
-
+/*用户个人主页图标*/
 .userlogo{
   font-size: 45px;
   margin-top:-6px;
 }
-
+/*页底*/
 .foot{
   left:0px;
   bottom:0px;
   color: white;
   background-color: black;
 }
-
+/*背景图片*/
 .background{
   width:1519px;
   background-size: 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-
+/*承载问题卡片的盒子*/
 .question{
   margin-top: 80px;
   margin-left: 250px;
   width:1000px;
   height:200px;
 }
-
+/*承载问题的卡片*/
 .card1{
   width: 1000px;
   text-align:left;
@@ -63,7 +63,7 @@
   overflow:hidden;
   word-break: break-all;
 }
-
+/*承载回答的盒子*/
 .display{
   background-color: white;
   float:left;
@@ -73,7 +73,7 @@
   margin-top:10px;
   opacity: 0.9;
 }
-
+/*回答*/
 .answer{
   margin-top: 15px;
   margin-left: 30px;
@@ -83,7 +83,7 @@
   overflow:hidden;
   word-break: break-all;
 }
-
+/*侧栏 小编每日推荐*/
 .banner{
   float:left;
   margin-top: 10px;
