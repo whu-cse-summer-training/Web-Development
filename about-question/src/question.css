@@ -1,6 +1,6 @@
+/*问题详情页*/
 @import '~antd/dist/antd.css';
-
-
+/*整个页面*/
 .thequestion{
   text-align: center;
 }
@@ -63,11 +63,11 @@
   overflow:hidden;
   word-break: break-all;
 }
-
+/*设置问题描述的字号*/
 h3{
     height:72px;
 }
-
+/*回答区域*/
 .display{
   background-color: white;
   float:left;
@@ -77,14 +77,14 @@ h3{
   margin-top:90px;
   opacity: 0.9;
 }
-
+/*所有回答的列表*/
 .answers{
   margin-top:20px;
   margin-left:30px;
   text-align:left;
   width:540px;
 }
-
+/*侧栏*/
 .banner{
   float:left;
   margin-top: 90px;
