@@ -1,3 +1,4 @@
+//答案详情页
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
@@ -27,6 +28,8 @@ import InfiniteScroll from 'react-infinite-scroller';
 
 const fakeDataUrl = 'https://randomuser.me/api/?results=5&inc=name,gender,email,nat&noinfo';
 const { TextArea } = Input;
+//展示评论列表
+//布局水平
 const CommentList = ({comments}) => (
   <List
     dataSource={comments}
@@ -68,6 +71,7 @@ class App extends React.Component {
       value: '',
     };
   }
+//有没有点过赞 
   islike =()=>{
     let liked=this.state.liked;
     if(liked){
@@ -152,7 +156,7 @@ class App extends React.Component {
       childrenDrawer: false,
     });
   };
-
+//展示评论列表
   componentDidMount() {
     this.fetchData(res => {
       this.setState({
@@ -162,6 +166,7 @@ class App extends React.Component {
   }
 
   fetchData = callback => {
+//异步请求 
     reqwest({
       url: fakeDataUrl,
       type: 'json',
@@ -186,6 +191,7 @@ class App extends React.Component {
       });
       return;
     }
+//下滑到底
     this.fetchData(res => {
       data = data.concat(res.results);
       this.setState({
