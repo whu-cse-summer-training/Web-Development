@@ -1,3 +1,4 @@
+/*个人主页*/
 @import '~antd/dist/antd.css';
 
 .App {
@@ -33,7 +34,7 @@
   font-size: 45px;
   margin-top:-6px;
 }
-
+/*背景图*/
 img{
   width:1500px;
   height:750px;
@@ -62,12 +63,12 @@ img{
   color:black;
   font-size: 40px;
 }
-
+/*修改个人信息的链接*/
 .link{
   margin-top: -20px;
   margin-left:750px;
 }
-
+/*5个子页面导航*/
 .card{
   margin-top:-420px;
   margin-left:250px;

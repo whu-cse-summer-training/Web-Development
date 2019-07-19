@@ -1,8 +1,7 @@
+//修改个人信息
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './userspace.css';
-
-
+import './index.css';
 import 'antd/dist/antd.css';
 import {
     Layout,
@@ -22,12 +21,16 @@ import {
     DatePicker,
     Select,
 } from 'antd';
-import user_backgroung from './meterials/user-background.jpg';
+import user_backgroung from './material/user-background.jpg';
 import moment from 'moment';
 const dateFormat = 'YYYY/MM/DD';
+//选择性别
 const { Option } = Select;
+//导航栏的搜索栏
 const { Search } = Input;
+//界面整体布局
 const { Header, Content, Footer } = Layout;
+//下拉菜单
 const menu = (
     <Menu>
         <Menu.Item>
@@ -38,7 +41,7 @@ const menu = (
         </Menu.Item>
     </Menu>
 );
-
+//图片格式转换
 function getBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -49,25 +52,22 @@ function getBase64(file) {
 }
 
 class RegistrationForm extends React.Component{
-
       state = {
         previewVisible: false,
         previewImage: '',
-        fileList: [
-
-        ],
-          value: 1,
-          confirmDirty: false,
-          autoCompleteResult: [],
+        fileList: [ ],
+        value: 1,
+        confirmDirty: false,
+        autoCompleteResult: [ ],
       };
-
+//取消上传头像
       handleCancel = () => this.setState({ previewVisible: false });
 
       handlePreview = async file => {
         if (!file.url && !file.preview) {
           file.preview = await getBase64(file.originFileObj);
         }
-
+//预览头像
         this.setState({
           previewImage: file.url || file.preview,
           previewVisible: true,
